@@ -1,457 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tranzita Systems - DSA Round</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tranzita Systems - PD Round</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --yellow:#FFE44D;
+  --pink:#FF4D8D;
+  --blue:#00C2FF;
+  --green:#00E676;
+  --orange:#FF8C42;
+  --black:#000;
+  --white:#fff;
+}
 *{
+  box-sizing:border-box;
   margin:0;
   padding:0;
-  box-sizing:border-box;
-  font-family:'Space Grotesk',sans-serif;
+  font-family:'Space Grotesk', sans-serif;
 }
-
 body{
-  background:#ffffff;
-  color:#000;
-  min-height:100vh;
+  background:var(--yellow);
+  padding:40px;
+  color:var(--black);
 }
-
-/* ===== NAVBAR ===== */
-.navbar{
-  padding:22px 40px;
-  font-weight:800;
-  font-size:22px;
-  background:#ffe600;
-  border-bottom:4px solid #000;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.nav-timer{
-  background:#ff5c5c;
-  padding:8px 18px;
-  border:3px solid #000;
-  box-shadow:4px 4px 0 #000;
-  display:none;
-}
-
-/* ===== SET SCREEN ===== */
-.sets-screen{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:32px;
-  padding:50px;
-}
-
-.set-card{
-  background:#ff90e8;
-  border:4px solid #000;
-  padding:30px;
-  cursor:pointer;
-  transition:.15s;
-  box-shadow:8px 8px 0 #000;
-}
-
-.set-card:nth-child(2){ background:#8aff80; }
-.set-card:nth-child(3){ background:#7ad3ff; }
-
-.set-card:hover{
-  transform:translate(-4px,-4px);
-  box-shadow:12px 12px 0 #000;
-}
-
-.set-title{
-  font-size:22px;
-  font-weight:800;
-}
-
-.lock{
-  margin-top:10px;
-  font-size:14px;
-  font-weight:600;
-}
-
-/* ===== QUESTIONS SCREEN ===== */
-.questions-screen{
-  display:none;
-  padding:50px;
+.container{
   max-width:1100px;
   margin:auto;
 }
-
-.back-btn{
-  margin-bottom:30px;
-  cursor:pointer;
-  font-weight:700;
-  display:inline-block;
-  padding:8px 16px;
-  border:3px solid #000;
-  background:#fff;
-  box-shadow:4px 4px 0 #000;
-}
-
-.q-card{
-  background:#ffffff;
-  border:4px solid #000;
-  padding:28px;
-  margin-bottom:32px;
-  box-shadow:8px 8px 0 #000;
-}
-
-.q-title{
-  font-size:22px;
-  font-weight:800;
-}
-
-.tag{
-  display:inline-block;
-  margin-top:10px;
-  background:#000;
-  color:#fff;
-  padding:4px 12px;
-  font-size:12px;
-  font-weight:700;
-}
-
-.section{
-  margin-top:20px;
-}
-
 .card{
-  background:#f4f4f4;
-  border:3px solid #000;
-  padding:14px;
-  margin-top:8px;
-  font-family:monospace;
-  white-space:pre-wrap;
-}
-
-/* ===== MODAL ===== */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.6);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.modal-box{
-  background:#ffffff;
-  border:4px solid #000;
+  background:var(--white);
+  border:4px solid var(--black);
+  box-shadow:8px 8px 0px var(--black);
   padding:30px;
-  width:320px;
-  box-shadow:10px 10px 0 #000;
+  margin-bottom:30px;
+}
+h1{
+  font-size:40px;
+  margin-bottom:15px;
+}
+h2{
+  margin-bottom:15px;
+  font-size:24px;
+}
+.badge{
+  display:inline-block;
+  padding:6px 12px;
+  border:3px solid var(--black);
+  background:var(--pink);
+  box-shadow:4px 4px 0px var(--black);
+  margin-bottom:15px;
+  font-weight:700;
+}
+.highlight{
+  background:var(--green);
+  padding:5px 8px;
+  border:3px solid var(--black);
+  display:inline-block;
+  font-weight:700;
+}
+ul{
+  margin-left:20px;
+  margin-top:10px;
+}
+li{
+  margin-bottom:8px;
+}
+.section-title{
+  background:var(--blue);
+  padding:8px 12px;
+  border:3px solid var(--black);
+  display:inline-block;
+  margin-bottom:10px;
+  font-weight:700;
+}
+.footer{
+  text-align:center;
+  margin-top:40px;
+  font-weight:600;
 }
 
-input{
-  width:100%;
-  padding:10px;
-  margin-top:14px;
-  border:3px solid #000;
+/* Tabs */
+.tabs{
+  display:flex;
+  gap:20px;
+  margin-bottom:30px;
 }
-
-button{
-  width:100%;
-  margin-top:16px;
-  padding:12px;
-  border:3px solid #000;
-  background:#ff5c5c;
+.tab-btn{
+  padding:12px 20px;
+  background:var(--blue);
+  border:4px solid var(--black);
+  box-shadow:6px 6px 0px var(--black);
   font-weight:700;
   cursor:pointer;
-  box-shadow:4px 4px 0 #000;
+}
+.tab-btn.active{
+  background:var(--pink);
+}
+.tab-content{
+  display:none;
+}
+.tab-content.active{
+  display:block;
+}
+
+@media(max-width:768px){
+  body{padding:20px;}
+  h1{font-size:28px;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="navbar">
-  <div>Tranzita Systems - DSA Round</div>
-  <div class="nav-timer" id="navTimer">00:00</div>
-</div>
+<div class="container">
 
-<div class="sets-screen" id="setsScreen"></div>
-
-<div class="questions-screen" id="questionsScreen">
-  <div class="back-btn" onclick="goBack()">← Back to Sets</div>
-  <div id="questionsContainer"></div>
-</div>
-
-<div class="modal" id="modal" style="display:none">
-  <div class="modal-box">
-    <h3>Enter Set Password</h3>
-    <input type="password" id="passwordInput">
-    <button onclick="verifyPassword()">Unlock</button>
+  <div class="card">
+    <h1>🎨 Tranzita Systems - Product Design Round</h1>
+    <p><strong>Role:</strong> Product Designer (Figma)</p>
+    <p><strong>Time Allocation:</strong> 3 Hours</p>
   </div>
+
+  <div class="tabs">
+    <div class="tab-btn active" onclick="openTab(1)">Set 1</div>
+    <div class="tab-btn" onclick="openTab(2)">Set 2</div>
+    <div class="tab-btn" onclick="openTab(3)">Set 3</div>
+  </div>
+
+  <!-- ===================== SET 1 ===================== -->
+  <div id="tab1" class="tab-content active">
+
+    <div class="card">
+      <h1>🛒 E-commerce Checkout Redesign</h1>
+      <p><strong>Role:</strong> Product Designer (Figma)</p>
+      <p><strong>Time Allocation:</strong> 3 Hours</p>
+      <p><strong>Focus Area:</strong> <span class="highlight">Conversion Optimization</span></p>
+    </div>
+
+    <div class="card">
+      <h2>📦 Problem Statement</h2>
+      <p>
+        Users are abandoning their carts during checkout.  
+        Your task is to redesign the checkout experience into a 
+        <strong>single-page fast checkout flow</strong> that reduces friction and improves conversion rate.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🎯 Objective</h2>
+      <ul>
+        <li>Increase checkout completion rate</li>
+        <li>Reduce cognitive load</li>
+        <li>Build trust & credibility</li>
+        <li>Minimize steps & unnecessary inputs</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>📱 Required Sections (Single Page Checkout)</h2>
+      <div class="section-title">Must Include</div>
+      <ul>
+        <li>Address Selection (saved + add new address)</li>
+        <li>Payment Method (Card / UPI / Wallet / COD)</li>
+        <li>Order Summary (items, pricing, delivery, taxes)</li>
+        <li>Promo Code Input (optional)</li>
+        <li>Primary “Place Order” CTA</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🖥 Screen Requirement</h2>
+      <p>You must design <strong>minimum 9 screens</strong> covering:</p>
+      <ul>
+        <li>Main Checkout Page</li>
+        <li>Add New Address</li>
+        <li>Edit Address</li>
+        <li>Payment Method – Card Entry</li>
+        <li>Payment Method – UPI / Wallet</li>
+        <li>Promo Code Applied State</li>
+        <li>Error State (e.g., invalid payment)</li>
+        <li>Loading / Processing Payment</li>
+        <li>Order Confirmation Screen</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>⚡ Conversion Requirements</h2>
+      <ul>
+        <li>Show trust elements (secure badges, payment logos, guarantees)</li>
+        <li>Display delivery estimate clearly</li>
+        <li>Highlight savings / discounts</li>
+        <li>Reduce unnecessary form fields</li>
+        <li>Use clear CTA hierarchy</li>
+        <li>Provide inline validation & helpful microcopy</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>📏 Constraints</h2>
+      <ul>
+        <li>Desktop-first (1440px width frame)</li>
+        <li>Optional responsive mobile layout</li>
+        <li>Use Auto Layout</li>
+        <li>Component-based design system</li>
+        <li>Minimum 10 reusable components</li>
+        <li>Include error & loading states</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ===================== SET 2 ===================== -->
+  <div id="tab2" class="tab-content">
+
+    <div class="card">
+      <h1>🩺 Book a Doctor Appointment</h1>
+      <p><strong>Role:</strong> Product Designer (Figma)</p>
+      <p><strong>Time Allocation:</strong> 3 Hours</p>
+      <p><strong>Focus Area:</strong> <span class="highlight">Flow Clarity & Time Slot UX</span></p>
+    </div>
+
+    <div class="card">
+      <h2>📦 Problem Statement</h2>
+      <p>
+        Users want to quickly book a doctor appointment without confusion.
+        The current booking experience is unclear and requires too many steps.
+        Your task is to design a <strong>clear, fast, and intuitive booking flow</strong>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🎯 Objective</h2>
+      <ul>
+        <li>Enable quick appointment booking</li>
+        <li>Prioritize important information clearly</li>
+        <li>Simplify calendar & time slot selection</li>
+        <li>Reduce friction during confirmation</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>📱 Core Flow</h2>
+      <div class="section-title">Must Include</div>
+      <ul>
+        <li>Search Doctor</li>
+        <li>Select Doctor</li>
+        <li>Select Date</li>
+        <li>Select Time Slot</li>
+        <li>Confirm Booking</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🖥 Screen Requirement</h2>
+      <p>You must design <strong>minimum 9 screens</strong> covering:</p>
+      <ul>
+        <li>Search Screen (default state)</li>
+        <li>Search Results with Filters</li>
+        <li>Doctor Detail Profile</li>
+        <li>Calendar View (Month/Week selection)</li>
+        <li>Time Slot Selection (Available vs Unavailable)</li>
+        <li>Selected Slot State</li>
+        <li>Booking Review Screen</li>
+        <li>Error State (e.g., slot just booked)</li>
+        <li>Booking Confirmation Success Screen</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>⚡ UX Considerations</h2>
+      <ul>
+        <li>Clear hierarchy of doctor info (experience, specialization, ratings)</li>
+        <li>Intuitive calendar handling</li>
+        <li>Visual clarity between available & unavailable slots</li>
+        <li>Selected time slot should be highly visible</li>
+        <li>Clear summary before final confirmation</li>
+        <li>Micro-interactions to guide the user</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>📏 Constraints</h2>
+      <ul>
+        <li>Mobile-first design (375px width)</li>
+        <li>Use Auto Layout</li>
+        <li>Component-based design system</li>
+        <li>Minimum 8 reusable components</li>
+        <li>Include loading, empty & error states</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ===================== SET 3 ===================== -->
+  <div id="tab3" class="tab-content">
+
+    <div class="card">
+      <h1>💸 Expense Split App</h1>
+      <p><strong>Role:</strong> Product Designer (Figma)</p>
+      <p><strong>Time Allocation:</strong> 3 Hours</p>
+      <p><strong>Focus Area:</strong> <span class="highlight">Product Thinking & Data Clarity</span></p>
+    </div>
+
+    <div class="card">
+      <h2>📦 Problem Statement</h2>
+      <p>
+        Friends often struggle to track shared expenses clearly.  
+        Your task is to design a <strong>simple and intuitive expense split app</strong>
+        where users can track who owes whom without confusion.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🎯 Objective</h2>
+      <ul>
+        <li>Make expense tracking effortless</li>
+        <li>Clearly show balances & debts</li>
+        <li>Visualize math in an understandable way</li>
+        <li>Keep the experience extremely simple</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>📱 Core Flow</h2>
+      <div class="section-title">Must Include</div>
+      <ul>
+        <li>Add Friends</li>
+        <li>Add Expense</li>
+        <li>Split Expense Equally</li>
+        <li>View Summary (Who owes what)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🖥 Screen Requirement</h2>
+      <p>You must design <strong>minimum 9 screens</strong> covering:</p>
+      <ul>
+        <li>Home / Dashboard (Group Summary)</li>
+        <li>Add Friend Screen</li>
+        <li>Friends List View</li>
+        <li>Add Expense Form</li>
+        <li>Select Participants</li>
+        <li>Split Calculation Preview</li>
+        <li>Expense Detail View</li>
+        <li>Balance Summary (Who owes whom)</li>
+        <li>Empty / No Expense State</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>⚡ UX Considerations</h2>
+      <ul>
+        <li>Clear numerical breakdown of expenses</li>
+        <li>Highlight positive vs negative balances</li>
+        <li>Make split math visually understandable</li>
+        <li>Avoid cluttered tables</li>
+        <li>Use hierarchy to show important financial data</li>
+        <li>Provide clear confirmation before adding expense</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>📏 Constraints</h2>
+      <ul>
+        <li>Mobile-first design (375px width)</li>
+        <li>Use Auto Layout</li>
+        <li>Component-based design system</li>
+        <li>Minimum 8 reusable components</li>
+        <li>Include loading, empty & error states</li>
+      </ul>
+    </div>
+
+  </div>
+
 </div>
 
 <script>
-/* ================= CONFIG ================= */
-const PASSWORDS=["set1","set2","set3"];
-const LOCK_DURATION = 60 * 60 * 1000; // 20 minutes
-
-let activeInterval=null;
-let selected=null;
-
-/* ===== QUESTIONS DATA ===== */
-const SETS=[
-
-[
-{
-title:"Two Sum",
-desc:`Find two indices such that their values add to target.
-Brute force → O(n²)
-Optimal → HashMap O(n).`,
-constraints:`2 ≤ n ≤ 10^4`,
-examples:`[2,7,11,15],9 → [0,1]
-[3,2,4],6 → [1,2]
-[3,3],6 → [0,1]
-[1,5,3,7],8 → [0,3]
-[0,4,3,0],0 → [0,3]`
-},
-{
-title:"Palindrome Number",
-desc:`Check if integer reads same backward.
-Negative numbers are not palindromes.`,
-constraints:`-2³¹ ≤ x ≤ 2³¹-1`,
-examples:`121 → true
--121 → false
-10 → false
-1331 → true
-0 → true`
-},
-{
-title:"Merge Strings Alternately",
-desc:`Merge characters alternately.
-If one string ends → append rest.`,
-constraints:`1 ≤ length ≤ 1000`,
-examples:`abc+pqr → apbqcr
-ab+pqrs → apbqrs
-a+b → ab
-hello+world → hweolrllod
-x+xyz → xxyz`
+function openTab(tabNumber){
+  document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.getElementById('tab' + tabNumber).classList.add('active');
+  document.querySelectorAll('.tab-btn')[tabNumber - 1].classList.add('active');
 }
-],
-
-[
-{
-title:"Valid Anagram",
-desc:`Two strings are anagrams if character counts match.`,
-constraints:`1 ≤ length ≤ 5×10⁴`,
-examples:`anagram,nagaram → true
-rat,car → false
-listen,silent → true
-evil,vile → true
-hello,bello → false`
-},
-{
-title:"Remove Duplicates Sorted Array",
-desc:`Remove duplicates in-place and return new length.`,
-constraints:`1 ≤ n ≤ 3×10⁴`,
-examples:`[1,1,2] → [1,2]
-[0,0,1,1,2] → [0,1,2]
-[1,2,3] → same
-[1,1,1] → [1]
-[] → []`
-},
-{
-title:"Max Pos/Neg Count",
-desc:`Return larger count between positives & negatives.`,
-constraints:`1 ≤ n ≤ 2000`,
-examples:`[-2,-1,-1,1,2,3] → 3
-[-3,-2,-1] → 3
-[1,2,3] → 3
-[-1,0,1] → 1
-[0,0] → 0`
-}
-],
-
-[
-{
-title:"Fizz Buzz",
-desc:`Multiples of 3 → Fizz
-5 → Buzz
-Both → FizzBuzz`,
-constraints:`1 ≤ n ≤ 10⁴`,
-examples:`3 → [1,2,Fizz]
-5 → …
-15 → …FizzBuzz
-1 → [1]
-2 → [1,2]`
-},
-{
-title:"Richest Customer Wealth",
-desc:`Row sum = wealth.
-Return maximum.`,
-constraints:`1 ≤ m,n ≤ 50`,
-examples:`[[1,2,3],[3,2,1]] → 6
-[[1,5],[7,3]] → 10
-[[2,8,7]] → 17
-[[0,0]] → 0
-[[5],[10],[3]] → 10`
-},
-{
-title:"Number of Good Pairs",
-desc:`Count pairs where nums[i]==nums[j] and i<j.`,
-constraints:`1 ≤ n ≤ 100`,
-examples:`[1,2,3,1,1,3] → 4
-[1,1,1,1] → 6
-[1,2,3] → 0
-[2,2,2] → 3
-[5,5,5,5,5] → 10`
-}
-]
-
-];
-
-function formatTime(ms){
-  const totalSeconds = Math.floor(ms / 1000);
-  const m = Math.floor(totalSeconds / 60);
-  const s = totalSeconds % 60;
-  return `${m.toString().padStart(2,"0")}:${s.toString().padStart(2,"0")}`;
-}
-
-/* ================= STORAGE ================= */
-function getLock(i){
-  return JSON.parse(localStorage.getItem("set_"+i));
-}
-
-function isUnlocked(i){
-  const data=getLock(i);
-  if(!data) return false;
-
-  if(Date.now() > data.expiry){
-    localStorage.removeItem("set_"+i);
-    return false;
-  }
-  return true;
-}
-
-function unlock(i){
-  const expiry = Date.now() + LOCK_DURATION;
-  localStorage.setItem("set_"+i, JSON.stringify({expiry}));
-}
-
-/* ================= TIMER ================= */
-function startTimerFromExpiry(expiry){
-
-  clearInterval(activeInterval);
-  navTimer.style.display="block";
-
-  function update(){
-    const remaining = expiry - Date.now();
-
-    if(remaining <= 0){
-      clearInterval(activeInterval);
-      navTimer.innerText="00:00";
-      alert("Time Over for this Set");
-      goBack();
-      return;
-    }
-
-    navTimer.innerText = formatTime(remaining);
-  }
-
-  update();
-  activeInterval = setInterval(update,1000);
-}
-
-/* ================= RENDER SETS ================= */
-function renderSets(){
-  setsScreen.innerHTML="";
-
-  SETS.forEach((_,i)=>{
-    const unlocked=isUnlocked(i);
-
-    const div=document.createElement("div");
-    div.className="set-card";
-
-    div.innerHTML=`
-      <div class="set-title">Set ${i+1}</div>
-      <div class="lock">${unlocked?"Unlocked":"🔒 Locked"}</div>
-    `;
-
-    div.onclick=()=>{
-      if(unlocked){
-        openSet(i);
-      }else{
-        selected=i;
-        modal.style.display="flex";
-      }
-    };
-
-    setsScreen.appendChild(div);
-  });
-}
-
-/* ================= VERIFY PASSWORD ================= */
-function verifyPassword(){
-  if(passwordInput.value===PASSWORDS[selected]){
-    unlock(selected);
-    modal.style.display="none";
-    openSet(selected);
-    renderSets();
-  }else{
-    alert("Wrong Password");
-  }
-}
-
-/* ================= OPEN SET ================= */
-function openSet(i){
-
-  const lockData = getLock(i);
-  if(!lockData){
-    alert("Set Locked");
-    return;
-  }
-
-  setsScreen.style.display="none";
-  questionsScreen.style.display="block";
-  questionsContainer.innerHTML="";
-
-  startTimerFromExpiry(lockData.expiry);
-
-  SETS[i].forEach((q,idx)=>{
-    const div=document.createElement("div");
-    div.className="q-card";
-
-    div.innerHTML=`
-      <div class="q-title">Q${idx+1}. ${q.title}</div>
-
-      <div class="section"><strong>Explanation</strong>
-        <p>${q.desc}</p></div>
-
-      <div class="section"><strong>Constraints</strong>
-        <div class="card">${q.constraints}</div></div>
-
-      <div class="section"><strong>Examples</strong>
-        <div class="card">${q.examples}</div></div>
-    `;
-
-    questionsContainer.appendChild(div);
-  });
-}
-
-/* ================= GO BACK ================= */
-function goBack(){
-  clearInterval(activeInterval);
-  navTimer.style.display="none";
-  questionsScreen.style.display="none";
-  setsScreen.style.display="grid";
-}
-
-/* ================= INIT ================= */
-renderSets();
-
 </script>
+
 </body>
 </html>
